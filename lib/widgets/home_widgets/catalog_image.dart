@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_demo/widgets/themes.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CatalogImage extends StatelessWidget {
@@ -9,8 +8,13 @@ class CatalogImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
-      image,
-    ).box.rounded.p8.color(context.canvasColor).make().p16().w40(context);
+    return context.isMobile
+        ? Image.network(
+            image,
+          ).box.rounded.p8.color(context.canvasColor).make().p16().w40(context)
+        : Image.network(
+            image,
+          ).box.rounded.p8.color(context.canvasColor).make().p16().w20(context);
   }
 }
+// wPCT(context: context, widthPCT: context.isMobile ? 40 : 20)
